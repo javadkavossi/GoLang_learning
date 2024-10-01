@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
-)
+// 	"github.com/pkg/errors"
+ )
 
 type Trade struct {
 	// if property name structs with capital letter , that's public otherwise is private :
@@ -57,8 +58,10 @@ func main() {
 
 	t, err := NewTrade("microsoft", 10.0, 100.00, true)
 	if err != nil {
+		// return errors.Wrap(err ,"Error can't create trad")
 		fmt.Printf("Error can't create trade - %s\n ", err)
 		os.Exit(1)
+
 	}
 
 	fmt.Println(t.Value())
