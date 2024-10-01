@@ -34,4 +34,9 @@ func main() {
 		fmt.Println(value)
 	}
 
+	// Append
+
+	foo = append(foo, "test 3")
+	println(foo)
+
 }
