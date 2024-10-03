@@ -24,3 +24,14 @@ func TestNegative(t *testing.T) {
 		t.Fatalf("expected error for negative input, got none")
 	}
 }
+
+func BenchmarkSqrt(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_, err := Sqrt(float64(i))
+		if err != nil {
+			b.Fatalf("Error in calculation: %v", err)
+		}
+	}
+}
+
+// Run (test benchMark) :  go test -v -bench .

@@ -32,3 +32,10 @@ func Sqrt(val float64) (float64, error) {
 	}
 	return guess, nil
 }
+
+// Run (test benchMark) :  go test -v -bench .
+// go test -v -bench . -run A
+// $ go test -v -bench . -run A -cpuprofile=prof.out
+// $ go tool pprof prof.out
+// list Sqrt
+// list Abs
