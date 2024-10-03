@@ -46,4 +46,5 @@ func main() {
 	if err := encode.Encode(response); err != nil {
 		log.Fatalf("ERROR: can't encode - %s", err)
 	}
+
 }
