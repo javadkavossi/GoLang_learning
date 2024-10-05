@@ -43,7 +43,8 @@ To run this project, you need to have Go installed. Follow the steps below to in
    git clone https://github.com/javadkavossi/GoLang_learning.git
 
 cd GoLang_learning
-go run main.go
+go run main.go  
+//go run folderName/main.go  
 
 Javad Kavossi - Developer and creator of this educational project.
 
