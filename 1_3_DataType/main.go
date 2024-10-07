@@ -9,10 +9,10 @@ import (
 func main() { // main project
 
 	var num int
-	var num8 int8
-	var num16 int16
-	var num32 int32
-	var num64 int64
+	var num8 int8 = 100
+	var num16 int16 = 10000
+	var num32 int32 = 1000000000
+	var num64 int64 = 1000000000000000000
 
 	fmt.Printf("num %d byte \n", unsafe.Sizeof(num))
 	fmt.Printf("num8 %d byte \n", unsafe.Sizeof(num8))

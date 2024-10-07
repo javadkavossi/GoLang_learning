@@ -1,3 +1,5 @@
+// go mod init persianUtil // For create module
+
 package main
 
 import "fmt"
