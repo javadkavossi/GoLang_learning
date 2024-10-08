@@ -1,25 +1,29 @@
 package main
 
-import (
-	"fmt"
-	"unsafe"
-)
+var globalBlock = 125 // globalBlock is a global variable
 
 func main() {
 
-	myStr := "Hello World 😃 😁"
+	println(globalBlock)
+	{
+		var localBlock = 124 // localBlock is a local variable
+		println(localBlock)
 
-	fmt.Printf("myStr: %s %T , len %d , size %d \n", myStr, myStr, len(myStr), unsafe.Sizeof(myStr))
-	for i := 0; i < len(myStr); i++ {
-		fmt.Printf("myStr[%d]: %c %T \n", i, myStr[i], myStr[i])
+		{
+			var localBlock = 1250 // this is a local variable
+			localBlock = localBlock * 9
+			println(localBlock)
+		}
+		println(localBlock)
 	}
+	println(globalBlock)
+	//println(localBlock)
 
-	fmt.Println("--------------------------------------")
-
-	myRune := []rune(myStr)
-	fmt.Printf("myRune: %v %T , len :%d ,size :%d \n", myRune, myRune, len(myRune), unsafe.Sizeof(myRune))
-	for i := 0; i < len(myRune); i++ {
-		fmt.Printf("myStr[%d]: %c %T\n", i, myRune[i], myRune[i])
+	{
+		// var block2 = 123
 	}
+}
 
+func calc() {
+	globalBlock = globalBlock + 10
 }
