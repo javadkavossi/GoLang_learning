@@ -7,7 +7,7 @@ import (
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fprint, err := fmt.Fprintf(w, "Hello World")
+	fprint, err := fmt.Fprintf(w, "Hello World !")
 
 	if err != nil {
 		log.Fatal(err)
