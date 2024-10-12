@@ -44,6 +44,5 @@ func main() {
 		log.Fatalf("ERROR: can't call httpbin.org")
 	}
 	defer res.Body.Close()
-
 	io.Copy(os.Stdout, res.Body)
 }
