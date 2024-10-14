@@ -35,7 +35,8 @@ func main() {
 	fmt.Printf("got: %+v\n", request)
 
 	// Create response
-	prevBalance := 8500000.0            // Loaded from database
+
+	prevBalance := 8500000.0 // Loaded from database
 	response := map[string]interface{}{ // use map with empty interface for a response
 		"ok":      true,
 		"code":    200,
