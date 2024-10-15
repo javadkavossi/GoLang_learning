@@ -33,10 +33,8 @@ func main() {
 		log.Fatalf("ERROR: can't decode - %s", err)
 	}
 	fmt.Printf("got: %+v\n", request)
-
 	// Create response
-
-	prevBalance := 8500000.0 // Loaded from database
+	prevBalance := 8500000.0            // Loaded from database
 	response := map[string]interface{}{ // use map with empty interface for a response
 		"ok":      true,
 		"code":    200,
@@ -47,5 +45,4 @@ func main() {
 	if err := encode.Encode(response); err != nil {
 		log.Fatalf("ERROR: can't encode - %s", err)
 	}
-
 }
