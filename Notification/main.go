@@ -3,23 +3,36 @@
 package main
 
 import (
+	"notification/constant"
 	"notification/entities"
-	"notification/externalServices"
 	"notification/services"
 )
 
 func main() {
 
-	order := entities.Order{
-		ID:           1,
-		UserFullName: "javadkavossi",
-		UserEmail:    "jkavossi@gmail.com",
-		UserPhone:    "0910505050",
-		Price:        1000,
-		Status:       true,
+	order1 := entities.Order{
+		ID:               1,
+		UserFullName:     "javadkavossi",
+		UserID:           "0910505050",
+		Price:            1000,
+		Status:           true,
+		NotificationType: constant.Email,
 	}
-	orderService := services.NewOrderService(externalServices.NewEmailService())
-	orderService.CreateOrder(&order)
-	// fmt.Println(order)
+	order2 := entities.Order{
+		ID:               2,
+		UserFullName:     "javadkavossi2",
+		UserID:           "0910505050",
+		Price:            1000,
+		Status:           true,
+		NotificationType: constant.Sms,
+	}
 
+
+
+	orderService := services.NewOrderService()
+	orderService.CreateOrder(&order1)
+
+	orderService2 := services.NewOrderService()
+	orderService2.CreateOrder(&order2)
+	// fmt.Println(order)
 }
