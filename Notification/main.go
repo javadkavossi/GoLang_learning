@@ -18,6 +18,10 @@ func main() {
 		Status:           true,
 		NotificationType: constant.Email,
 	}
+
+	orderService := services.NewOrderService()
+	orderService.CreateOrder(&order1)
+
 	order2 := entities.Order{
 		ID:               2,
 		UserFullName:     "javadkavossi2",
@@ -29,8 +33,6 @@ func main() {
 
 
 
-	orderService := services.NewOrderService()
-	orderService.CreateOrder(&order1)
 
 	orderService2 := services.NewOrderService()
 	orderService2.CreateOrder(&order2)
