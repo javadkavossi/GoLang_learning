@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
-      POSTGRES_dB: car_sale
+      POSTGRES_DB: car_sale
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
@@ -32,6 +32,7 @@ services:
     restart: unless-stopped
     depends_on:
       - postgres
+
   ####################### REDIS #######################
   redis:
     image: redis:latest
@@ -47,7 +48,7 @@ services:
       - webapi_network
 volumes:
   postgres:
-  pgAdmin:
+  pgadmin:
   redis:
   logs:
 

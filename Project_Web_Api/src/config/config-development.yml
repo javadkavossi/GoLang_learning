@@ -1,4 +1,6 @@
 server:
+  protocol: "http://"
+  uriHost : "localhost"
   internalPort: 5005
   externalPort: 5005
   runMode: debug
@@ -14,7 +16,7 @@ postgres:
   port: 5432
   user: postgres
   password: admin
-  dbName: car_sale_db
+  dbName: car_sale
   sslMode: disable
   maxIdleConns: 15
   maxOpenConns: 100

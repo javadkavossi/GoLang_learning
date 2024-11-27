@@ -21,5 +21,5 @@ func TestRouter(router *gin.RouterGroup) {
 	router.POST("/BodyBinder", h.BodyBinder)
 	router.POST("/FormBinder", h.FormBinder)
 	router.POST("/file-binder", h.FileBinder)
-	router.POST("/add-user", h.AddUser)
+
 }

@@ -1,0 +1,65 @@
+definitions:
+  helper.BaseHttpResponse:
+    properties:
+      error: {}
+      result: {}
+      resultCode:
+        type: integer
+      success:
+        type: boolean
+      validationErrors:
+        items:
+          $ref: '#/definitions/validations.ValidationError'
+        type: array
+    type: object
+  validations.ValidationError:
+    properties:
+      message:
+        type: string
+      property:
+        type: string
+      tag:
+        type: string
+      value:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /v1/health:
+    get:
+      consumes:
+      - application/json
+      description: Check the health of the server
+      parameters:
+      - description: Example query parameter
+        in: query
+        name: queryParam
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Check Health
+      tags:
+      - Health
+  /v1/health/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Check the health of the server By Id
+      parameters:
+      - description: ID of the health check
+        in: path
+        name: id
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Check Health by Id
+      tags:
+      - Health
+swagger: "2.0"

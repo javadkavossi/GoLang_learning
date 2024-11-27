@@ -27,14 +27,39 @@ func NewTestHandler() *TestHandler {
 	return &TestHandler{}
 }
 
+// HealthCheck godoc
+// @Summary Test Handler
+// @Description Test Routing
+// @Tags Test
+// @Accept json
+// @produces json
+// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Router /v1/test [Get]
 func (h *TestHandler) Test(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse("Working ! ", true, http.StatusOK))
 }
 
+// HealthCheck godoc
+// @Summary Test Handler
+// @Description Users Routing
+// @Tags Test
+// @Accept json
+// @produces json
+// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Router /v1/test/users [Get]
 func (h *TestHandler) Users(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse("user", true, http.StatusOK))
 }
 
+// HealthCheck godoc
+// @Summary Test Handler User By id
+// @Description Test Routing User By id
+// @Tags Test
+// @Accept json
+// @produces json
+// @Param id path string false "ID of the user"
+// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Router /v1/test/user/:id [Get]
 func (h *TestHandler) UserById(ctx *gin.Context) {
 	id := ctx.Param("id")
 	result := map[string]string{
@@ -44,38 +69,61 @@ func (h *TestHandler) UserById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(result, true, http.StatusOK))
 }
 
+// HealthCheck godoc
+// @Summary Test Handler get user by user Name
+// @Description Test Routing User By user Name
+// @Tags Test
+// @Accept json
+// @produces json
+// @Param username path string false "Name of the user"
+// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Router /v1/test/user/:username [Get]
 func (h *TestHandler) UserName(ctx *gin.Context) {
 	userName := ctx.Param("username")
-	ctx.JSON(http.StatusOK, gin.H{
+	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(map[string]string{
 		"result":   "User Name",
 		"UserName": userName,
-	})
+	}, true, http.StatusOK))
 }
 
+// HealthCheck godoc
+// @Summary Test Handler User Id/account
+// @Description Test Routing User By id
+// @Tags Test
+// @Accept json
+// @produces json
+// @Param id path string false "ID of the user in Account"
+// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Router /v1/test/user/:id/account [Get]
 func (h *TestHandler) Accounts(ctx *gin.Context) {
 	id := ctx.Param("id")
-	ctx.JSON(http.StatusOK, gin.H{
+	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(map[string]string{
 		"result":   "Account",
 		"UserName": id,
-	})
+	}, true, http.StatusOK))
 }
 
-func (h *TestHandler) AddUser(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"result": "Add User",
-	})
-}
-
+// HealthCheck godoc
+// @Summary Test Handler HeaderBinder1
+// @Description Test HeaderBinder1 Get Header Data
+// @Tags Test
+// @Accept json
+// @produces json
+// @Param userId header string false "User Id"
+// @Param contentType header string false "Content-Type"
+// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Router /v1/test/user/HeaderBinder1 [Post]
 func (h *TestHandler) HeaderBinder1(ctx *gin.Context) {
 	userId := ctx.GetHeader("userId")
 	contentType := ctx.GetHeader("Content-Type")
-
-	ctx.JSON(http.StatusOK, gin.H{
-		"result":      "HeaderBinder1",
-		"UserId":      userId,
+	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(map[string]string{
+		"userId":      userId,
 		"contentType": contentType,
-	})
+	}, true, http.StatusOK))
 }
+
+
+
 
 func (h *TestHandler) HeaderBinder2(ctx *gin.Context) {
 	header := header{}
