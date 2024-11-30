@@ -16,10 +16,12 @@ func NewHealthHandler() *HealthHandler {
 }
 func (h *HealthHandler) Health(ctx *gin.Context) {
 	var sum float64
+	
 	for i := int64(0); i < 1e9; i++ {
 		sum += math.Sqrt(float64(i))
 		sum += sum
 	}
+
 	ctx.JSON(http.StatusOK, "Working")
 	return
 
