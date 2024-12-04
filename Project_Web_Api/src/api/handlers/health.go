@@ -10,11 +10,9 @@ import (
 
 type HealthHandler struct {
 }
-
 func NewHealthHandler() *HealthHandler {
 	return &HealthHandler{}
 }
-
 func (h *HealthHandler) Health(ctx *gin.Context) {
 	var sum float64
 	for i := int64(0); i < 1e9; i++ {

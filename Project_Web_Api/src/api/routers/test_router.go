@@ -5,6 +5,7 @@ import (
 	"github.com/javadkavossi/GoLang_learning/api/handlers"
 )
 
+
 func TestRouter(router *gin.RouterGroup) {
 	h := handlers.NewTestHandler()
 	router.GET("/", h.Test)
