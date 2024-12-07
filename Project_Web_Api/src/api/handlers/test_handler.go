@@ -238,6 +238,8 @@ func (h *TestHandler) FormBinder(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(person, true, http.StatusOK))
 }
 
+
+
 // HealthCheck godoc
 // @Summary Test Handler FileBinder
 // @Description Test FileBinder Post File Data for Upload
