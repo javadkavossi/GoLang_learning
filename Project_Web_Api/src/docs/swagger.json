@@ -59,9 +59,423 @@
                     }
                 }
             }
+        },
+        "/v1/test": {
+            "get": {
+                "description": "Test Routing",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler",
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/BodyBinder": {
+            "post": {
+                "description": "Test BodyBinder Post Body Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler BodyBinder",
+                "parameters": [
+                    {
+                        "description": "Data",
+                        "name": "Data",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.personData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/FileBinder": {
+            "post": {
+                "description": "Test FileBinder Post File Data for Upload",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler FileBinder",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "File to upload",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/FormBinder": {
+            "post": {
+                "description": "Test FormBinder Post Body Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler FormBinder",
+                "parameters": [
+                    {
+                        "description": "Data",
+                        "name": "Data",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.personData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/HeaderBinder1": {
+            "post": {
+                "description": "Test HeaderBinder1 Get Header Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler HeaderBinder1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User Id",
+                        "name": "userId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Content-Type",
+                        "name": "contentType",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/HeaderBinder2": {
+            "post": {
+                "description": "Test HeaderBinder1 Get Header Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler HeaderBinder2",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "browser",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "name": "contentType",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "name": "host",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "name": "userId",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/QueryBinder1": {
+            "post": {
+                "description": "Test QueryBinder1 Get Query Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler QueryBinder1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Family",
+                        "name": "family",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/QueryBinder2": {
+            "post": {
+                "description": "Test QueryBinder2 Get Query Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler QueryBinder2",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Family",
+                        "name": "family",
+                        "in": "query"
+                    },
+                    {
+                        "type": "array",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/UriBinder/:Data": {
+            "post": {
+                "description": "Test UriBinder Post Uri Data",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler UriBinder",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Data",
+                        "name": "Data",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/user/:id": {
+            "get": {
+                "description": "Test Routing User By id",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler User By id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID of the user",
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/user/:id/account": {
+            "get": {
+                "description": "Test Routing User By id",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler User Id/account",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID of the user in Account",
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/user/:username": {
+            "get": {
+                "description": "Test Routing User By user Name",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler get user by user Name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name of the user",
+                        "name": "username",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/test/users": {
+            "get": {
+                "description": "Users Routing",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Handler",
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "handlers.personData": {
+            "type": "object",
+            "required": [
+                "first_name",
+                "last_name",
+                "mobile_number"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 3
+                },
+                "last_name": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 3
+                },
+                "mobile_number": {
+                    "type": "string"
+                }
+            }
+        },
         "helper.BaseHttpResponse": {
             "type": "object",
             "properties": {

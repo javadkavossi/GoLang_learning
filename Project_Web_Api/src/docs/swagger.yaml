@@ -1,4 +1,21 @@
 definitions:
+  handlers.personData:
+    properties:
+      first_name:
+        maxLength: 50
+        minLength: 3
+        type: string
+      last_name:
+        maxLength: 50
+        minLength: 3
+        type: string
+      mobile_number:
+        type: string
+    required:
+    - first_name
+    - last_name
+    - mobile_number
+    type: object
   helper.BaseHttpResponse:
     properties:
       error: {}
@@ -62,4 +79,255 @@ paths:
       summary: Check Health by Id
       tags:
       - Health
+  /v1/test:
+    get:
+      consumes:
+      - application/json
+      description: Test Routing
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler
+      tags:
+      - Test
+  /v1/test/BodyBinder:
+    post:
+      consumes:
+      - application/json
+      description: Test BodyBinder Post Body Data
+      parameters:
+      - description: Data
+        in: body
+        name: Data
+        schema:
+          $ref: '#/definitions/handlers.personData'
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler BodyBinder
+      tags:
+      - Test
+  /v1/test/FileBinder:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Test FileBinder Post File Data for Upload
+      parameters:
+      - description: File to upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler FileBinder
+      tags:
+      - Test
+  /v1/test/FormBinder:
+    post:
+      consumes:
+      - application/json
+      description: Test FormBinder Post Body Data
+      parameters:
+      - description: Data
+        in: body
+        name: Data
+        schema:
+          $ref: '#/definitions/handlers.personData'
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler FormBinder
+      tags:
+      - Test
+  /v1/test/HeaderBinder1:
+    post:
+      consumes:
+      - application/json
+      description: Test HeaderBinder1 Get Header Data
+      parameters:
+      - description: User Id
+        in: header
+        name: userId
+        type: string
+      - description: Content-Type
+        in: header
+        name: contentType
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler HeaderBinder1
+      tags:
+      - Test
+  /v1/test/HeaderBinder2:
+    post:
+      consumes:
+      - application/json
+      description: Test HeaderBinder1 Get Header Data
+      parameters:
+      - in: header
+        name: browser
+        type: string
+      - in: header
+        name: contentType
+        type: string
+      - in: header
+        name: host
+        type: string
+      - in: header
+        name: userId
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler HeaderBinder2
+      tags:
+      - Test
+  /v1/test/QueryBinder1:
+    post:
+      consumes:
+      - application/json
+      description: Test QueryBinder1 Get Query Data
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        type: string
+      - description: Family
+        in: query
+        name: family
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler QueryBinder1
+      tags:
+      - Test
+  /v1/test/QueryBinder2:
+    post:
+      consumes:
+      - application/json
+      description: Test QueryBinder2 Get Query Data
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        type: string
+      - description: Family
+        in: query
+        name: family
+        type: string
+      - description: ID
+        in: query
+        name: id
+        type: array
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler QueryBinder2
+      tags:
+      - Test
+  /v1/test/UriBinder/:Data:
+    post:
+      consumes:
+      - application/json
+      description: Test UriBinder Post Uri Data
+      parameters:
+      - description: Data
+        in: path
+        name: Data
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler UriBinder
+      tags:
+      - Test
+  /v1/test/user/:id:
+    get:
+      consumes:
+      - application/json
+      description: Test Routing User By id
+      parameters:
+      - description: ID of the user
+        in: path
+        name: id
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler User By id
+      tags:
+      - Test
+  /v1/test/user/:id/account:
+    get:
+      consumes:
+      - application/json
+      description: Test Routing User By id
+      parameters:
+      - description: ID of the user in Account
+        in: path
+        name: id
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler User Id/account
+      tags:
+      - Test
+  /v1/test/user/:username:
+    get:
+      consumes:
+      - application/json
+      description: Test Routing User By user Name
+      parameters:
+      - description: Name of the user
+        in: path
+        name: username
+        type: string
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler get user by user Name
+      tags:
+      - Test
+  /v1/test/users:
+    get:
+      consumes:
+      - application/json
+      description: Users Routing
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.BaseHttpResponse'
+      summary: Test Handler
+      tags:
+      - Test
 swagger: "2.0"

@@ -128,7 +128,7 @@ func (h *TestHandler) HeaderBinder1(ctx *gin.Context) {
 // @Tags Test
 // @Accept json
 // @produces json
-// @Param contentType header &header false "header Data struct"
+// @Param contentType header header false "header Data struct"
 // @Failure 400 {object} helper.BaseHttpResponse "Bad request"
 // @Router /v1/test/HeaderBinder2 [Post]
 func (h *TestHandler) HeaderBinder2(ctx *gin.Context) {
@@ -242,11 +242,11 @@ func (h *TestHandler) FormBinder(ctx *gin.Context) {
 // @Summary Test Handler FileBinder
 // @Description Test FileBinder Post File Data for Upload
 // @Tags Test
-// @Accept json
+// @Accept multipart/form-data
 // @produces json
-// @Param File formData true "File"
+// @Param file formData file true "File to upload"
 // @Failure 400 {object} helper.BaseHttpResponse "Bad request"
-// @Router /v1/test/FileBinder [Post]
+// @Router /v1/test/FileBinder [post]
 func (h *TestHandler) FileBinder(ctx *gin.Context) {
 	file, _ := ctx.FormFile("file")
 	err := ctx.SaveUploadedFile(file, "file.png")
