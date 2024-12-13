@@ -1,11 +1,11 @@
 server:
   protocol: "http://"
-  uriHost : "localhost"
+  uriHost: "localhost"
   internalPort: 5005
   externalPort: 5005
   runMode: debug
 logger:
-  filePath: ../logs/
+  filePath: ../logs/logs.log
   encoding: json
   level: debug
   logger: zerolog

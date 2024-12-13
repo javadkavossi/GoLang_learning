@@ -6,11 +6,14 @@ import (
 	"time"
 
 	"github.com/javadkavossi/GoLang_learning/config"
+	"github.com/javadkavossi/GoLang_learning/pkg/logging"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 var dbClient *gorm.DB
+
+var logger = logging.NewLogger(config.GetConfig())
 
 func InitDb(cfg *config.Config) error {
 	cnn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s TimeZone=Asia/Tehran",
@@ -29,7 +32,7 @@ func InitDb(cfg *config.Config) error {
 	sqlDb.SetMaxIdleConns(cfg.Postgres.MaxIdleConns)
 	sqlDb.SetMaxOpenConns(cfg.Postgres.MaxOpenConns)
 	sqlDb.SetConnMaxLifetime(cfg.Postgres.ConnMaxLifetime * time.Minute)
-
+	logger.Info(logging.Postgres, logging.Startup, "DB Connection established", nil)
 	log.Println("DB Connection established")
 
 	return nil
