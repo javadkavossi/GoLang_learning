@@ -10,6 +10,25 @@ type BaseHttpResponse struct {
 	Error           any                            `json:"error"`
 }
 
+type Result struct {
+}
+
+type SuccessResponse struct {
+	Result          *Result `json:"result" `
+	ResultCode      int     `json:"resultCode" default:"200"`
+	Success         bool    `json:"success" default:"true"`
+	ValidationError string  `json:"validationErrors" default:"null"`
+	error           string  `json:"error" default:"null"`
+}
+
+type FailureResponse struct {
+	Error           string                         `json:"error"`
+	Result          *Result                        `json:"result"`
+	ResultCode      int                            `json:"resultCode"`
+	Success         bool                           `json:"success" default:"false"`
+	ValidationError *[]validations.ValidationError `json:"validationErrors"`
+}
+
 func GenerateBaseResponse(result any, success bool, resultCode int) *BaseHttpResponse {
 	return &BaseHttpResponse{
 		Result:          result,

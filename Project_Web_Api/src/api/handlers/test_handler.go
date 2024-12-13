@@ -33,19 +33,21 @@ func NewTestHandler() *TestHandler {
 // @Tags Test
 // @Accept json
 // @produces json
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test [Get]
 func (h *TestHandler) Test(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse("Working ! ", true, http.StatusOK))
 }
 
 // HealthCheck godoc
-// @Summary Test Handler
+// @Summary Test Handler Users
 // @Description Users Routing
 // @Tags Test
 // @Accept json
 // @produces json
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/users [Get]
 func (h *TestHandler) Users(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse("user", true, http.StatusOK))
@@ -58,7 +60,8 @@ func (h *TestHandler) Users(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param id path string false "ID of the user"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/user/:id [Get]
 func (h *TestHandler) UserById(ctx *gin.Context) {
 	id := ctx.Param("id")
@@ -76,7 +79,8 @@ func (h *TestHandler) UserById(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param username path string false "Name of the user"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/user/:username [Get]
 func (h *TestHandler) UserName(ctx *gin.Context) {
 	userName := ctx.Param("username")
@@ -93,7 +97,8 @@ func (h *TestHandler) UserName(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param id path string false "ID of the user in Account"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/user/:id/account [Get]
 func (h *TestHandler) Accounts(ctx *gin.Context) {
 	id := ctx.Param("id")
@@ -111,7 +116,8 @@ func (h *TestHandler) Accounts(ctx *gin.Context) {
 // @produces json
 // @Param userId header string false "User Id"
 // @Param contentType header string false "Content-Type"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/HeaderBinder1 [Post]
 func (h *TestHandler) HeaderBinder1(ctx *gin.Context) {
 	userId := ctx.GetHeader("userId")
@@ -129,7 +135,8 @@ func (h *TestHandler) HeaderBinder1(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param contentType header header false "header Data struct"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/HeaderBinder2 [Post]
 func (h *TestHandler) HeaderBinder2(ctx *gin.Context) {
 	header := header{}
@@ -148,7 +155,8 @@ func (h *TestHandler) HeaderBinder2(ctx *gin.Context) {
 // @produces json
 // @Param name query string false "Name"
 // @Param family query string false "Family"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/QueryBinder1 [Post]
 func (h *TestHandler) QueryBinder1(ctx *gin.Context) {
 	name := ctx.Query("name")
@@ -169,7 +177,8 @@ func (h *TestHandler) QueryBinder1(ctx *gin.Context) {
 // @Param name query string false "Name"
 // @Param family query string false "Family"
 // @Param id query array false "ID"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/QueryBinder2 [Post]
 func (h *TestHandler) QueryBinder2(ctx *gin.Context) {
 	ids := ctx.QueryArray("id")
@@ -190,7 +199,8 @@ func (h *TestHandler) QueryBinder2(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param Data path string false "Data"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/UriBinder/:Data [Post]
 func (h *TestHandler) UriBinder(ctx *gin.Context) {
 	data := ctx.Param("Data")
@@ -207,7 +217,8 @@ func (h *TestHandler) UriBinder(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param Data body personData false "Data"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/BodyBinder [Post]
 func (h *TestHandler) BodyBinder(ctx *gin.Context) {
 	person := personData{}
@@ -226,7 +237,8 @@ func (h *TestHandler) BodyBinder(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param Data body personData false "Data"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/FormBinder [Post]
 func (h *TestHandler) FormBinder(ctx *gin.Context) {
 	person := personData{}
@@ -238,8 +250,6 @@ func (h *TestHandler) FormBinder(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(person, true, http.StatusOK))
 }
 
-
-
 // HealthCheck godoc
 // @Summary Test Handler FileBinder
 // @Description Test FileBinder Post File Data for Upload
@@ -247,7 +257,8 @@ func (h *TestHandler) FormBinder(ctx *gin.Context) {
 // @Accept multipart/form-data
 // @produces json
 // @Param file formData file true "File to upload"
-// @Failure 400 {object} helper.BaseHttpResponse "Bad request"
+// @Success 200 {object} helper.SuccessResponse "Success"
+// @Failure 400 {object} helper.FailureResponse "Bad request"
 // @Router /v1/test/FileBinder [post]
 func (h *TestHandler) FileBinder(ctx *gin.Context) {
 	file, _ := ctx.FormFile("file")

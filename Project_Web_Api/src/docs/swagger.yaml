@@ -29,6 +29,38 @@ definitions:
           $ref: '#/definitions/validations.ValidationError'
         type: array
     type: object
+  helper.FailureResponse:
+    properties:
+      error:
+        type: string
+      result:
+        $ref: '#/definitions/helper.Result'
+      resultCode:
+        type: integer
+      success:
+        default: false
+        type: boolean
+      validationErrors:
+        items:
+          $ref: '#/definitions/validations.ValidationError'
+        type: array
+    type: object
+  helper.Result:
+    type: object
+  helper.SuccessResponse:
+    properties:
+      result:
+        $ref: '#/definitions/helper.Result'
+      resultCode:
+        default: 200
+        type: integer
+      success:
+        default: true
+        type: boolean
+      validationErrors:
+        default: "null"
+        type: string
+    type: object
   validations.ValidationError:
     properties:
       message:
@@ -85,10 +117,14 @@ paths:
       - application/json
       description: Test Routing
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler
       tags:
       - Test
@@ -104,10 +140,14 @@ paths:
         schema:
           $ref: '#/definitions/handlers.personData'
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler BodyBinder
       tags:
       - Test
@@ -123,10 +163,14 @@ paths:
         required: true
         type: file
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler FileBinder
       tags:
       - Test
@@ -142,10 +186,14 @@ paths:
         schema:
           $ref: '#/definitions/handlers.personData'
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler FormBinder
       tags:
       - Test
@@ -164,10 +212,14 @@ paths:
         name: contentType
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler HeaderBinder1
       tags:
       - Test
@@ -190,10 +242,14 @@ paths:
         name: userId
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler HeaderBinder2
       tags:
       - Test
@@ -212,10 +268,14 @@ paths:
         name: family
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler QueryBinder1
       tags:
       - Test
@@ -238,10 +298,14 @@ paths:
         name: id
         type: array
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler QueryBinder2
       tags:
       - Test
@@ -256,10 +320,14 @@ paths:
         name: Data
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler UriBinder
       tags:
       - Test
@@ -274,10 +342,14 @@ paths:
         name: id
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler User By id
       tags:
       - Test
@@ -292,10 +364,14 @@ paths:
         name: id
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler User Id/account
       tags:
       - Test
@@ -310,10 +386,14 @@ paths:
         name: username
         type: string
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
+            $ref: '#/definitions/helper.FailureResponse'
       summary: Test Handler get user by user Name
       tags:
       - Test
@@ -323,11 +403,21 @@ paths:
       - application/json
       description: Users Routing
       responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad request
           schema:
-            $ref: '#/definitions/helper.BaseHttpResponse'
-      summary: Test Handler
+            $ref: '#/definitions/helper.FailureResponse'
+      summary: Test Handler Users
       tags:
       - Test
+securityDefinitions:
+  AuthBearer:
+    description: Type "Bearer " followed by your token
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

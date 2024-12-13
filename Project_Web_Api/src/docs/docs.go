@@ -82,10 +82,16 @@ const docTemplate = `{
                 ],
                 "summary": "Test Handler",
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -112,10 +118,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -141,10 +153,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -171,10 +189,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -205,10 +229,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -247,10 +277,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -281,10 +317,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -321,10 +363,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -349,10 +397,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -377,10 +431,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -405,10 +465,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -433,10 +499,16 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -451,12 +523,18 @@ const docTemplate = `{
                 "tags": [
                     "Test"
                 ],
-                "summary": "Test Handler",
+                "summary": "Test Handler Users",
                 "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.SuccessResponse"
+                        }
+                    },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "#/definitions/helper.BaseHttpResponse"
+                            "$ref": "#/definitions/helper.FailureResponse"
                         }
                     }
                 }
@@ -506,6 +584,53 @@ const docTemplate = `{
                 }
             }
         },
+        "helper.FailureResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/helper.Result"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "validationErrors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/validations.ValidationError"
+                    }
+                }
+            }
+        },
+        "helper.Result": {
+            "type": "object"
+        },
+        "helper.SuccessResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "$ref": "#/definitions/helper.Result"
+                },
+                "resultCode": {
+                    "type": "integer",
+                    "default": 200
+                },
+                "success": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "validationErrors": {
+                    "type": "string",
+                    "default": "null"
+                }
+            }
+        },
         "validations.ValidationError": {
             "type": "object",
             "properties": {
@@ -522,6 +647,14 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "AuthBearer": {
+            "description": "Type \"Bearer \" followed by your token",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

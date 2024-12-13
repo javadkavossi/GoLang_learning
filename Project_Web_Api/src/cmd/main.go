@@ -9,25 +9,28 @@ import (
 	"github.com/javadkavossi/GoLang_learning/data/db"
 )
 
+
+// @securityDefinitions.apikey AuthBearer
+// @in header
+// @name Authorization
+// @description Type "Bearer " followed by your token
+
 func main() {
 	cfg := config.GetConfig()
-
 	err := cache.InitRedis(cfg)
 	defer cache.CloseRedis()
 
 	if err != nil {
 		log.Fatal("Error Redis : ", err)
 	}
-
 	err = db.InitDb(cfg)
 	if err != nil {
 		log.Fatal("Error Postgres : ", err)
 	}
 	defer db.CloseDb()
-
 	api.InitServer(cfg)
-
 }
+
 
 // Add Swager ...
 //go install github.com/swaggo/swag/cmd/swag@latest
