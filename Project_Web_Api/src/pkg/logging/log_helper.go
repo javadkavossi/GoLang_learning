@@ -20,3 +20,16 @@ func prepareLogKeys(extra map[ExtraKey]interface{}, cat Category, sub SubCategor
 	params := mapToZapParams(extra)
 	return params
 }
+
+
+// ============================== Map For Zero ===============================
+
+func logParamsToZeroParams(keys map[ExtraKey]interface{}) map[string]interface{} {
+	params := map[string]interface{}{}
+
+	for k, v := range keys {
+		params[string(k)] = v
+	}
+
+	return params
+}

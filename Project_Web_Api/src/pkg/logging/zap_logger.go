@@ -54,7 +54,8 @@ func (l *zapLogger) Init() {
 		l.getLogLevel(),
 	)
 
-	logger := zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1), zap.AddStacktrace(zapcore.ErrorLevel)).Sugar()
+	logger := zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1), zap.AddStacktrace(zapcore.ErrorLevel)).Sugar().
+		With("AppName", "DPGGameService", "LoggerName", "Zerolog")
 
 	l.logger = logger
 
