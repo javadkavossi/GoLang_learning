@@ -19,6 +19,7 @@ func InitServer(cfg *config.Config) {
 
 	r := gin.New()
 
+	r.Use(middlewares.DefaultStructuredLogger(cfg))
 	RegisterValidator()
 	r.Use(middlewares.Cors(cfg))
 	r.Use(gin.Logger(), gin.Recovery() /*middlewares.TestMiddleware()*/, middlewares.Limiter())

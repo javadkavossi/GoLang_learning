@@ -7,6 +7,7 @@ import (
 	"github.com/javadkavossi/GoLang_learning/config"
 	"github.com/javadkavossi/GoLang_learning/data/cache"
 	"github.com/javadkavossi/GoLang_learning/data/db"
+	"github.com/javadkavossi/GoLang_learning/data/db/migrations"
 	"github.com/javadkavossi/GoLang_learning/pkg/logging"
 )
 
@@ -33,6 +34,7 @@ func main() {
 		log.Fatal("Error Postgres : ", err)
 	}
 	defer db.CloseDb()
+	migrations.Up_1()
 	api.InitServer(cfg)
 }
 

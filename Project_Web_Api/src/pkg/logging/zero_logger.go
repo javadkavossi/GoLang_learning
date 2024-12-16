@@ -2,11 +2,15 @@ package logging
 
 import (
 	"os"
+	"sync"
 
 	"github.com/javadkavossi/GoLang_learning/config"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/pkgerrors"
 )
+
+var once sync.Once
+var zeroSinLogger *zerolog.Logger
 
 type zeroLogger struct {
 	cfg    *config.Config
@@ -28,15 +32,18 @@ func newZeroLogger(cfg *config.Config) *zeroLogger {
 }
 
 func (l *zeroLogger) Init() {
+	once.Do(func() {
 
-	zerolog.ErrorStackMarshaler = pkgerrors.MarshalStack
-	file, err := os.OpenFile(l.cfg.Logger.FilePath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
-	if err != nil {
-		panic("Clod Not open log File ")
-	}
-	var logger = zerolog.New(file).With().Timestamp().Str("AppName", "DPGGameService").Str("LoggerName", "Zerolog").Logger()
-	zerolog.SetGlobalLevel(l.getLogLevel())
-	l.logger = &logger
+		zerolog.ErrorStackMarshaler = pkgerrors.MarshalStack
+		file, err := os.OpenFile(l.cfg.Logger.FilePath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+		if err != nil {
+			panic("Clod Not open log File ")
+		}
+		var logger = zerolog.New(file).With().Timestamp().Str("AppName", "DPGGameService").Str("LoggerName", "Zerolog").Logger()
+		zerolog.SetGlobalLevel(l.getLogLevel())
+		zeroSinLogger = &logger
+	})
+	l.logger = zeroSinLogger
 
 }
 
