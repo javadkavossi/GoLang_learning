@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 
 var redisClient *redis.Client
 
+// ========================================= Initial Redis ===============================================
 func InitRedis(cfg *config.Config) error {
 	redisClient = redis.NewClient(&redis.Options{
 		Addr:               fmt.Sprintf("%s:%s", cfg.Redis.Host, cfg.Redis.Port),
@@ -30,13 +32,35 @@ func InitRedis(cfg *config.Config) error {
 		return err
 	}
 	return nil
-
 }
 
+// ========================================= Get Redis ===============================================
 func GetRedis() *redis.Client {
 	return redisClient
 }
 
+// ========================================= Close Redis ===============================================
 func CloseRedis() {
 	redisClient.Close()
+}
+
+func Set[T any](c *redis.Client, key string, value T, duration time.Duration) error {
+	v, err := json.Marshal(value)
+	if err != nil {
+		return err
+	}
+	return c.Set(key, v, duration).Err()
+}
+
+func Get[T any](c *redis.Client, key string) (T, error) {
+	var dest T = *new(T)
+	v, err := c.Get(key).Result()
+	if err != nil {
+		return dest, err
+	}
+	err = json.Unmarshal([]byte(v), &dest)
+	if err != nil {
+		return dest, err
+	}
+	return dest, nil
 }
